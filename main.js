@@ -32,3 +32,14 @@ let sum = (a, b) => a + b;
 let sum2 = (a, b) => {
   return a + b;
 };
+
+// CALLBACK
+
+setTimeout(() => {
+  // async codes that does not run right away by using callback
+  console.log("run after 1000ms");
+}, 1000);
+
+document.addEventListener("click", () => {
+  console.log("clicked"); // callback func
+});
