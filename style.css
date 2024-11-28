@@ -1,9 +1,48 @@
 .list-item {
   cursor: pointer;
-  width: min-content;
 }
 
-.list-item:hover {
-  color: red;
+.list-item {
+  display: flex;
+  /* gap: 4px; */
+  align-items: center;
+}
+
+.new-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.btn {
+  padding: 8px;
+  /* margin-left: 8px; */
+}
+
+.delete-btn {
+  margin-left: 16px;
+}
+
+#item-input {
+  padding: 8px;
+}
+
+.input-text {
+  color: gray;
+  font-size: 18px;
+}
+
+#list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line {
   text-decoration: line-through;
+}
+
+.gray {
+  color: gray;
 }

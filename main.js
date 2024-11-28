@@ -43,3 +43,42 @@ setTimeout(() => {
 document.addEventListener("click", () => {
   console.log("clicked"); // callback func
 });
+
+const promise = new Promise((resolve, reject) => {
+  const sum = 1 + 1;
+  if (sum === 2) {
+    console.log("success");
+
+    resolve(sum);
+  } else {
+    reject("error");
+  }
+});
+
+promise
+  .then((mess) => {
+    console.log(mess);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// const todos = fetch("https://jsonplaceholder.typicode.com/users")
+//   .then((res) => {
+//     return res.json();
+//   })
+//   .then((data) => {
+//     data.forEach((user) => {
+//       console.log(user.name);
+//     });
+//   });
+
+async function fetchUsers() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  console.log(res);
+
+  const data = await res.json();
+  console.log(data);
+}
+
+fetchUsers();

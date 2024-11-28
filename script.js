@@ -13,12 +13,36 @@ form.addEventListener("submit", (e) => {
 function addItem(value) {
   const item = document.createElement("div");
   item.classList.add("list-item");
-  item.textContent = value;
+
+  // checkbox
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "checkbox";
+
+  // text
+  const text = document.createElement("div");
+  text.classList.add("todo-text");
+  text.innerText = value;
+
+  // delete btn
+  const btn = document.createElement("button");
+  btn.innerText = "Delete";
+  btn.classList.add("delete-btn");
+
+  item.append(checkbox, text, btn);
 
   todoList.append(item);
 
-  item.addEventListener("click", (e) => {
+  btn.addEventListener("click", (e) => {
     todoList.removeChild(item);
     // item.remove()
+  });
+
+  checkbox.addEventListener("click", (e) => {
+    if (e.target.checked) {
+      text.classList.add("line", "gray");
+    } else {
+      text.classList.remove("line", "gray");
+    }
   });
 }
