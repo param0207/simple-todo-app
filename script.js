@@ -16,4 +16,9 @@ function addItem(value) {
   item.textContent = value;
 
   todoList.append(item);
+
+  item.addEventListener("click", (e) => {
+    todoList.removeChild(item);
+    // item.remove()
+  });
 }
