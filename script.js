@@ -6,20 +6,20 @@ const form = document.querySelector(".new-item-form");
 let TODOS = getTodos();
 TODOS.forEach(addTodo);
 
+// TODO complete or incomplete
 todoList.addEventListener("change", (e) => {
   if (!e.target.matches("#checkbox")) return;
 
   const parent = e.target.closest(".list-item");
   const id = parent.dataset.id;
-  console.log(TODOS);
 
   const todo = TODOS.find((todo) => todo.id === id);
-  console.log(todo);
 
   todo.complete = e.target.checked;
   saveTodos();
 });
 
+// delete TODO
 todoList.addEventListener("click", (e) => {
   if (!e.target.matches(".delete-btn")) return;
   const parent = e.target.closest(".list-item");
@@ -29,7 +29,7 @@ todoList.addEventListener("click", (e) => {
   saveTodos();
 });
 
-// event listener
+// on TODO sumbit
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = todoInput.value;
@@ -45,6 +45,7 @@ form.addEventListener("submit", (e) => {
   todoInput.value = "";
 });
 
+// add new TODO
 function addTodo(newTodo) {
   const item = document.createElement("div");
   item.classList.add("list-item");
@@ -71,10 +72,12 @@ function addTodo(newTodo) {
   todoList.append(item);
 }
 
+// save TODOS to local storage
 function saveTodos() {
   localStorage.setItem("todos", JSON.stringify(TODOS));
 }
 
+// get TODOS from local storage
 function getTodos() {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
   return todos;
